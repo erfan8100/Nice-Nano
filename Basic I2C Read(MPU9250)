@@ -1,0 +1,43 @@
+#include <Arduino.h>
+#include <MPU9250.h>
+
+MPU9250 imu(Wire, 0x68); // Use 0x68 or 0x69 based on AD0
+
+void setup() {
+  Serial.begin(115200);
+  Wire.begin();
+
+  // Initialize MPU9255
+  int status = imu.begin();
+  if (status < 0) {
+    Serial.println("IMU initialization failed:");
+    Serial.println(status);
+    while (1);
+  }
+  
+  // Calibrate accelerometer/gyro
+  imu.calibrateAccel();
+  imu.calibrateGyro();
+}
+
+void loop() {
+  imu.readSensor(); // Read all sensors
+
+  // Print data
+  Serial.print("Accel (m/s²): ");
+  Serial.print(imu.getAccelX_mss()); Serial.print(", ");
+  Serial.print(imu.getAccelY_mss()); Serial.print(", ");
+  Serial.println(imu.getAccelZ_mss());
+
+  Serial.print("Gyro (rad/s): ");
+  Serial.print(imu.getGyroX_rads()); Serial.print(", ");
+  Serial.print(imu.getGyroY_rads()); Serial.print(", ");
+  Serial.println(imu.getGyroZ_rads());
+
+  Serial.print("Mag (μT): ");
+  Serial.print(imu.getMagX_uT()); Serial.print(", ");
+  Serial.print(imu.getMagY_uT()); Serial.print(", ");
+  Serial.println(imu.getMagZ_uT());
+
+  delay(100);
+}
