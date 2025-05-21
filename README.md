@@ -1,11 +1,15 @@
 # Nice-Nano
 
+
 # Project Title & Badges
 ![PlatformIO](https://img.shields.io/badge/PlatformIO-Compatible-brightgreen)  
 ![License](https://img.shields.io/badge/License-MIT-blue)  
 ![Stars](https://img.shields.io/github/stars/erfan8100/Nice-Nano?style=social)
 
-# Blink example, I2C library, bootloader integration
+# keywords :
+Blink example, I2C library, bootloader integration
+
+
 
 # Hardware Setup
 ![20 05 2025_08 24 03_REC](https://github.com/user-attachments/assets/acb4b4fc-d14c-4934-8850-d096fd4a4733)
